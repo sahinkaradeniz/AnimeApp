@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AnimeApp</string>
+    <string name="favorites">Favorites</string>
+    <string name="animes">Animes</string>
+</resources>

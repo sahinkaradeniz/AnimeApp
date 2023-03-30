@@ -1,0 +1,42 @@
+package com.example.data.dto.animes.allAnime
+import com.google.gson.annotations.SerializedName
+
+data class Data (
+
+    @SerializedName("mal_id"          ) var malId          : Int,
+    @SerializedName("url"             ) var url            : String,
+    @SerializedName("images"          ) var images         : Image,
+    @SerializedName("trailer"         ) var trailer        : Trailer,
+    @SerializedName("approved"        ) var approved       : Boolean,
+    @SerializedName("titles"          ) var titles         : ArrayList<Titles>,
+    @SerializedName("title"           ) var title          : String,
+    @SerializedName("title_english"   ) var titleEnglish   : String?=null,
+    @SerializedName("title_japanese"  ) var titleJapanese  : String,
+    @SerializedName("title_synonyms"  ) var titleSynonyms  : ArrayList<String>   ,
+    @SerializedName("type"            ) var type           : String,
+    @SerializedName("source"          ) var source         : String,
+    @SerializedName("episodes"        ) var episodes       : Int,
+    @SerializedName("status"          ) var status         : String,
+    @SerializedName("airing"          ) var airing         : Boolean,
+    @SerializedName("aired"           ) var aired          : Aired,
+    @SerializedName("duration"        ) var duration       : String,
+    @SerializedName("rating"          ) var rating         : String,
+    @SerializedName("score"           ) var score          : Double,
+    @SerializedName("scored_by"       ) var scoredBy       : Int,
+    @SerializedName("rank"            ) var rank           : Int,
+    @SerializedName("popularity"      ) var popularity     : Int,
+    @SerializedName("members"         ) var members        : Int,
+    @SerializedName("favorites"       ) var favorites      : Int,
+    @SerializedName("synopsis"        ) var synopsis       : String,
+    @SerializedName("background"      ) var background     : String,
+    @SerializedName("season"          ) var season         : String,
+    @SerializedName("year"            ) var year           : Int,
+    @SerializedName("broadcast"       ) var broadcast      : Broadcast,
+    @SerializedName("producers"       ) var producers      : ArrayList<Producers> ,
+    @SerializedName("licensors"       ) var licensors      : ArrayList<Licensors> ,
+    @SerializedName("studios"         ) var studios        : ArrayList<Studios>  ,
+    @SerializedName("genres"          ) var genres         : ArrayList<Genres>   ,
+    @SerializedName("explicit_genres" ) var explicitGenres : ArrayList<String>    ,
+    @SerializedName("themes"          ) var themes         : ArrayList<Themes>   ,
+
+)

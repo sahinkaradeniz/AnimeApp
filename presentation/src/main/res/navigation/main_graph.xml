@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/animeFragment">
+
+    <fragment
+        android:id="@+id/animeFragment"
+        android:name="com.example.presentation.ui.anime.AnimeFragment"
+        android:label="fragment_anime"
+        tools:layout="@layout/fragment_anime" >
+        <action
+            android:id="@+id/action_animeFragment_to_animeDetailFragment"
+            app:destination="@id/animeDetailFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/animeDetailFragment"
+        android:name="com.example.presentation.ui.animedetail.AnimeDetailFragment"
+        android:label="fragment_anime_detail"
+        tools:layout="@layout/fragment_anime_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.presentation.ui.favorites.FavoritesFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
+</navigation>
