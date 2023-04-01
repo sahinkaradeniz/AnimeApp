@@ -2,7 +2,7 @@ package com.example.data.source.remote
 
 import android.util.Log
 import com.example.common.NetworkResponseState
-import com.example.data.api.AnimeApiService
+import com.example.data.datastore.api.AnimeApiService
 import com.example.data.dto.animes.allAnime.Data
 import com.example.data.dto.animes.anime.DetailData
 import javax.inject.Inject

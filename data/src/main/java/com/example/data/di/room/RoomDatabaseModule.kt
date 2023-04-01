@@ -1,8 +1,8 @@
-package com.example.data.di.database
+package com.example.data.di.room
 
 import android.content.Context
 import androidx.room.Room
-import com.example.data.dao.FavoritesDao
+import com.example.data.datastore.room.FavoritesDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -7,7 +7,7 @@ import com.example.data.mapper.anime.AnimeDetailMapper
 import com.example.data.mapper.animelist.AnimeListMapper
 import com.example.data.mapper.animelist.AnimeMainMapper
 import com.example.data.mapper.anime.AnimeMapper
-import com.example.data.mapper.favorite.FavoriMapperEntitytoDb
+import com.example.data.mapper.favorite.FavoriMapperImpl
 import com.example.data.mapper.favorite.FavoriteMapper
 import com.example.data.mapper.favoriteList.FavoriteListMapper
 import com.example.data.mapper.favoriteList.FavoriteListMapperImpl
@@ -34,7 +34,7 @@ abstract class MapperModule {
 
     @Binds
     @Singleton
-    abstract fun favoriyesEntitytoDbMapper(favoriteMapperEntitytoDb: FavoriMapperEntitytoDb):FavoriteMapper<FavoritesEntity,FavoritesDbModel>
+    abstract fun favoriyesEntitytoDbMapper(favoriteMapperEntitytoDb: FavoriMapperImpl):FavoriteMapper<FavoritesEntity,FavoritesDbModel>
 
     @Binds
     @Singleton

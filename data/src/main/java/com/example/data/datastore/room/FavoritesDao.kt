@@ -1,4 +1,4 @@
-package com.example.data.dao
+package com.example.data.datastore.room
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.data.dto.favorite.FavoritesDbModel
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FavoritesDao {

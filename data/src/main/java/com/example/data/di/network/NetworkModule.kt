@@ -1,6 +1,6 @@
 package com.example.data.di.network
 
-import com.example.data.api.AnimeApiService
+import com.example.data.datastore.api.AnimeApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

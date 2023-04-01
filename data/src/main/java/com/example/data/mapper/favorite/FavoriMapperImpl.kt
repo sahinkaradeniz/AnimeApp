@@ -4,7 +4,7 @@ import com.example.data.dto.favorite.FavoritesDbModel
 import com.example.domain.entity.FavoritesEntity
 import javax.inject.Inject
 
-class FavoriMapperEntitytoDb @Inject constructor():FavoriteMapper<FavoritesEntity,FavoritesDbModel> {
+class FavoriMapperImpl @Inject constructor():FavoriteMapper<FavoritesEntity,FavoritesDbModel> {
     override fun map(input: FavoritesEntity?): FavoritesDbModel {
         return FavoritesDbModel(
             id = input?.id,

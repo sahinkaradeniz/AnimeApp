@@ -1,8 +1,7 @@
 package com.example.data.source.local
 
-import com.example.data.dao.FavoritesDao
+import com.example.data.datastore.room.FavoritesDao
 import com.example.data.dto.favorite.FavoritesDbModel
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class LocalDataSourceImpl @Inject constructor( private val favoritesDao: FavoritesDao) : LocalDataSource {

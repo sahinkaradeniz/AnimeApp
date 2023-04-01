@@ -45,9 +45,6 @@ dependencies {
     implementation(Deps.appCompat)
     implementation(Deps.core)
     implementation(Deps.androidMaterial)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0")
     testImplementation(TestImplementation.junit)
 
     implementation (DaggerHilt.hilt)

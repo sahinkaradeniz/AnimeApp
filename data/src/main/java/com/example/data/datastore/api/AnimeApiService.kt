@@ -1,4 +1,4 @@
-package com.example.data.api
+package com.example.data.datastore.api
 
 import com.example.data.dto.animes.allAnime.AllAnimeResponse
 import com.example.data.dto.animes.anime.AnimeResponse
