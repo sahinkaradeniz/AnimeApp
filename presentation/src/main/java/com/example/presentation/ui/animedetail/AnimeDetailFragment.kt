@@ -32,15 +32,16 @@ class AnimeDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewState()
-        getArgs()
-        clickBackButton()
+        observeLiveData()
+        val id = args.id
+        viewModel.getAnimeDetail(id)
+        clickBackButtons()
 
     }
 
-    private fun viewState() {
+    private fun observeLiveData() {
         viewModel.animeDetailState.observe(viewLifecycleOwner) {
-            when (it) {
+            when(it) {
                 is AnimeDetailUiState.Error -> {
                     binding.erorDetailAnime.text = requireContext().getText(R.string.eror)
                     progressVisible()
@@ -48,11 +49,24 @@ class AnimeDetailFragment : Fragment() {
                 is AnimeDetailUiState.Success -> {
                     setData(it.data)
                     progressGone()
-                    clickFavoriteButton(it.data)
                 }
                 is AnimeDetailUiState.Loading -> {
                     binding.erorDetailAnime.text = requireContext().getText(R.string.loading)
                     progressVisible()
+                }
+                else -> {}
+            }
+        }
+        viewModel.addFavoriteState.observe(viewLifecycleOwner){
+            when(it){
+                is AddFavoriteAnimeDetailUiState.Error ->{
+                    Toast.makeText(requireContext(), "eror add", Toast.LENGTH_SHORT).show()
+                }
+                is AddFavoriteAnimeDetailUiState.Success ->{
+                    Toast.makeText(requireContext(), "succes add", Toast.LENGTH_SHORT).show()
+                }
+                is AddFavoriteAnimeDetailUiState.Loading ->{
+
                 }
             }
         }
@@ -70,18 +84,15 @@ class AnimeDetailFragment : Fragment() {
         }
     }
 
-    private fun clickBackButton() {
+    private fun clickBackButtons() {
         binding.backButtonAnime.setOnClickListener {
             findNavController().popBackStack()
         }
-    }
-
-    private fun clickFavoriteButton(animeDetailUiData: AnimeDetailUiData) {
         binding.favoriteDetailAnime.setOnClickListener {
-            viewModel.addAnimeToFavorites(animeDetailUiData)
-            Toast.makeText(requireContext(), "add anime to favorites", Toast.LENGTH_SHORT).show()
+            viewModel.addAnimeToFavorites()
         }
     }
+
 
     private fun progressGone() {
         binding.rootView.visible()
@@ -95,10 +106,6 @@ class AnimeDetailFragment : Fragment() {
         binding.erorDetailAnime.visible()
     }
 
-    private fun getArgs() {
-        val id = args.id
-        viewModel.getAnimeDetail(id)
-    }
 
 
 }

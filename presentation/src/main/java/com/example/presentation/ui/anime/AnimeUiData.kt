@@ -6,4 +6,5 @@ data class AnimeUiData (
     var titleEnglish: String,
     var rating: String,
     var score: Double,
+    var isFavorites:Boolean=false
 )

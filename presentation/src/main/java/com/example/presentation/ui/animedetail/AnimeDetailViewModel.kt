@@ -19,11 +19,15 @@ import javax.inject.Inject
 class AnimeDetailViewModel @Inject constructor(
     private val getAnimeDetailUseCase: GetAnimeDetailUseCase,
     private val animeDetailUiMapper: AnimeMapper<AnimeDetailEntity, AnimeDetailUiData>,
-    private val favoriteUsecase: AddFavoriteUsecase
+    private val addFavoriteUsecase: AddFavoriteUsecase
 ): ViewModel() {
    private val _animeDetailState=MutableLiveData<AnimeDetailUiState>()
    val animeDetailState:LiveData<AnimeDetailUiState> get() = _animeDetailState
 
+   private val _addFavoriteState = MutableLiveData<AddFavoriteAnimeDetailUiState>()
+   val addFavoriteState: LiveData<AddFavoriteAnimeDetailUiState> get() = _addFavoriteState
+
+   private lateinit var animeData:AnimeDetailUiData
    fun getAnimeDetail(id:Int){
       viewModelScope.launch {
          getAnimeDetailUseCase.invoke(id).collect{
@@ -32,7 +36,8 @@ class AnimeDetailViewModel @Inject constructor(
                   _animeDetailState.postValue(AnimeDetailUiState.Loading)
                }
                is NetworkResponseState.Success ->{
-                  _animeDetailState.postValue(AnimeDetailUiState.Success(animeDetailUiMapper.map(it.result)))
+                  animeData=animeDetailUiMapper.map(it.result)
+                  _animeDetailState.postValue(AnimeDetailUiState.Success(animeData))
                }
                is  NetworkResponseState.Error->{
                   _animeDetailState.postValue(AnimeDetailUiState.Error(R.string.eror))
@@ -41,9 +46,22 @@ class AnimeDetailViewModel @Inject constructor(
          }
       }
    }
-   fun addAnimeToFavorites(animeDetailUiData: AnimeDetailUiData){
+
+   fun addAnimeToFavorites(){
       viewModelScope.launch {
-         favoriteUsecase.invoke(animeDetailUiData.toFavorite())
+            addFavoriteUsecase.invoke(animeData.toFavorite()).collect{
+               when(it){
+                  is NetworkResponseState.Success->{
+                     _addFavoriteState.postValue(AddFavoriteAnimeDetailUiState.Success(it.result!!))
+                  }
+                  is NetworkResponseState.Error ->{
+                     _addFavoriteState.postValue(AddFavoriteAnimeDetailUiState.Error(R.string.eror))
+                  }
+                  is NetworkResponseState.Loading ->{
+                     _addFavoriteState.postValue(AddFavoriteAnimeDetailUiState.Loading)
+                  }
+               }
+            }
       }
    }
 }

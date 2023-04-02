@@ -5,6 +5,7 @@ import com.example.common.base.BaseViewHolder
 import com.example.common.extension.downloadFromUrl
 import com.example.common.extension.inflateAdapterItem
 import com.example.domain.entity.FavoritesEntity
+import com.example.presentation.R
 import com.example.presentation.databinding.AnimeItemBinding
 import com.example.presentation.util.toFavorite
 
@@ -27,6 +28,11 @@ class AnimeViewHolder(
             }
             animeFavorite.setOnClickListener {
                 favoriteClick?.invoke(data.toFavorite())
+            }
+            if (data.isFavorites){
+                animeFavorite.setImageResource(R.drawable.baseline_favorite_24)
+            }else{
+                animeFavorite.setImageResource(R.drawable.ic_empty_favorite)
             }
         }
     }

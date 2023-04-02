@@ -12,10 +12,10 @@ interface AnimeRepository {
 
     suspend fun getAnime(id: Int): Flow<NetworkResponseState<AnimeDetailEntity>>
 
-    suspend fun getAllFavorites(): Flow<List<FavoritesEntity>>
+    suspend fun getAllFavorites(): Flow<NetworkResponseState<List<FavoritesEntity>>>
 
-    suspend fun deleteFavorite(favoritesDbModel:FavoritesEntity)
+    suspend fun deleteFavorite(favoritesDbModel:FavoritesEntity):Flow<NetworkResponseState<FavoritesEntity>>
 
-    suspend fun addFavorites(favoritesDbModel:FavoritesEntity)
+    suspend fun addFavorites(favoritesDbModel:FavoritesEntity):Flow<NetworkResponseState<FavoritesEntity>>
 
 }

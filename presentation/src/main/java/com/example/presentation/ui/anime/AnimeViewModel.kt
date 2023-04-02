@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.common.NetworkResponseState
-import com.example.data.dto.favorite.FavoritesDbModel
 import com.example.data.mapper.animelist.AnimeListMapper
 import com.example.domain.entity.AnimeEntity
 import com.example.domain.entity.FavoritesEntity
@@ -24,6 +23,9 @@ class AnimeViewModel @Inject constructor(
 ) : ViewModel() {
     private val _animeUiState = MutableLiveData<AnimeUiState>()
     val animeUiState: LiveData<AnimeUiState> get() = _animeUiState
+
+    private val _addFavoriteState = MutableLiveData<AddFavoriteAnimeUiState>()
+    val addFavoriteState: LiveData<AddFavoriteAnimeUiState> get() = _addFavoriteState
 
     fun getAllAnime() {
         viewModelScope.launch {
@@ -45,7 +47,19 @@ class AnimeViewModel @Inject constructor(
 
     fun addFavoriteAnime(favoritesEntity: FavoritesEntity) {
         viewModelScope.launch {
-            addFavoriteUsecase.invoke(favoritesEntity)
+            addFavoriteUsecase.invoke(favoritesEntity).collect{
+                when(it){
+                    is NetworkResponseState.Success->{
+                        _addFavoriteState.postValue(AddFavoriteAnimeUiState.Success(it.result!!))
+                    }
+                    is NetworkResponseState.Error ->{
+                        _addFavoriteState.postValue(AddFavoriteAnimeUiState.Error(R.string.eror))
+                    }
+                    is NetworkResponseState.Loading ->{
+                        _addFavoriteState.postValue(AddFavoriteAnimeUiState.Loading)
+                    }
+                }
+            }
         }
     }
 }

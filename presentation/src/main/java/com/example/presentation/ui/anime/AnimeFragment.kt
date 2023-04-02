@@ -10,10 +10,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.common.extension.gone
 import com.example.common.extension.visible
-import com.example.data.dto.favorite.FavoritesDbModel
 import com.example.domain.entity.FavoritesEntity
-import com.example.presentation.R
 import com.example.presentation.databinding.FragmentAnimeBinding
+import com.example.presentation.ui.animedetail.AddFavoriteAnimeDetailUiState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,12 +31,12 @@ class AnimeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewState()
+        liveDataObserve()
         viewModel.getAllAnime()
         adapterInit()
     }
 
-    private fun viewState() {
+    private fun liveDataObserve() {
         viewModel.animeUiState.observe(viewLifecycleOwner){
             when(it){
                 is AnimeUiState.Loading ->{
@@ -49,6 +48,19 @@ class AnimeFragment : Fragment() {
                 }
                 is AnimeUiState.Error ->{
                     Toast.makeText(requireContext(), "eror ${it}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+        viewModel.addFavoriteState.observe(viewLifecycleOwner){
+            when(it){
+                is AddFavoriteAnimeUiState.Error ->{
+                    Toast.makeText(requireContext(), "eror add", Toast.LENGTH_SHORT).show()
+                }
+                is AddFavoriteAnimeUiState.Success ->{
+                    Toast.makeText(requireContext(), "succes add ${it.data.title}", Toast.LENGTH_SHORT).show()
+                }
+                is AddFavoriteAnimeUiState.Loading ->{
+
                 }
             }
         }
