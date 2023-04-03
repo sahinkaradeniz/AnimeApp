@@ -10,10 +10,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.common.extension.downloadFromUrl
-import com.example.common.extension.gone
-import com.example.common.extension.visible
 import com.example.presentation.R
 import com.example.presentation.databinding.FragmentAnimeDetailBinding
+import com.example.presentation.ui.dialog.AppDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,6 +21,7 @@ class AnimeDetailFragment : Fragment() {
     private val viewModel by viewModels<AnimeDetailViewModel>()
     private lateinit var binding: FragmentAnimeDetailBinding
     private val args: AnimeDetailFragmentArgs by navArgs()
+    private lateinit var dialog:AppDialogFragment
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -33,10 +33,9 @@ class AnimeDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeLiveData()
-        val id = args.id
-        viewModel.getAnimeDetail(id)
+        dialog= AppDialogFragment()
         clickBackButtons()
-
+        getArgs()
     }
 
     private fun observeLiveData() {
@@ -44,26 +43,24 @@ class AnimeDetailFragment : Fragment() {
             when(it) {
                 is AnimeDetailUiState.Error -> {
                     binding.erorDetailAnime.text = requireContext().getText(R.string.eror)
-                    progressVisible()
+                    dialog.dismiss()
                 }
                 is AnimeDetailUiState.Success -> {
                     setData(it.data)
-                    progressGone()
+                    dialog.dismiss()
                 }
                 is AnimeDetailUiState.Loading -> {
-                    binding.erorDetailAnime.text = requireContext().getText(R.string.loading)
-                    progressVisible()
+                    dialog.show(childFragmentManager,"dialogFragment")
                 }
-                else -> {}
             }
         }
         viewModel.addFavoriteState.observe(viewLifecycleOwner){
             when(it){
                 is AddFavoriteAnimeDetailUiState.Error ->{
-                    Toast.makeText(requireContext(), "eror add", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "error", Toast.LENGTH_SHORT).show()
                 }
                 is AddFavoriteAnimeDetailUiState.Success ->{
-                    Toast.makeText(requireContext(), "succes add", Toast.LENGTH_SHORT).show()
+                    binding.addfavoriteButton.setImageResource(R.drawable.baseline_favorite_24)
                 }
                 is AddFavoriteAnimeDetailUiState.Loading ->{
 
@@ -88,24 +85,18 @@ class AnimeDetailFragment : Fragment() {
         binding.backButtonAnime.setOnClickListener {
             findNavController().popBackStack()
         }
-        binding.favoriteDetailAnime.setOnClickListener {
+        binding.addfavoriteButton.setOnClickListener {
             viewModel.addAnimeToFavorites()
         }
     }
-
-
-    private fun progressGone() {
-        binding.rootView.visible()
-        binding.animeDetailProgress.gone()
-        binding.erorDetailAnime.gone()
+    private fun getArgs(){
+        val id = args.id
+        viewModel.getAnimeDetail(id)
+        val isFavorite=args.isFavorite
+        if (isFavorite==1){
+            binding.addfavoriteButton.setImageResource(R.drawable.baseline_favorite_24)
+        }else{
+            binding.addfavoriteButton.setImageResource(R.drawable.ic_empty_favorite)
+        }
     }
-
-    private fun progressVisible() {
-        binding.rootView.gone()
-        binding.animeDetailProgress.visible()
-        binding.erorDetailAnime.visible()
-    }
-
-
-
 }

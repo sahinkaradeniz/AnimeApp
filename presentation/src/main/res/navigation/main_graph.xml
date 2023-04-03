@@ -23,6 +23,9 @@
         <argument
             android:name="id"
             app:argType="integer" />
+        <argument
+            android:name="isFavorite"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"

@@ -45,6 +45,9 @@ dependencies {
     implementation(Deps.appCompat)
     implementation(Deps.core)
     implementation(Deps.androidMaterial)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     testImplementation(TestImplementation.junit)
 
     implementation (DaggerHilt.hilt)
@@ -60,4 +63,5 @@ dependencies {
     implementation(project(Modules.common))
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
 }

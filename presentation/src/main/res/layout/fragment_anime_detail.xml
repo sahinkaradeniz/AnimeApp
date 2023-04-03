@@ -15,26 +15,13 @@
         android:id="@+id/eror_detail_anime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Eror"
         android:textColor="@android:color/black"
         android:textSize="17sp"
         android:textStyle="bold"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@+id/anime_detail_progress"
-        app:layout_constraintStart_toStartOf="@+id/anime_detail_progress"
-        app:layout_constraintTop_toBottomOf="@+id/anime_detail_progress" />
-
-    <ProgressBar
-        android:id="@+id/anime_detail_progress"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/root_view" />
+        tools:layout_editor_absoluteX="206dp"
+        tools:layout_editor_absoluteY="283dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/root_view"
@@ -53,7 +40,7 @@
             android:layout_marginTop="42dp"
             android:layout_marginEnd="24dp"
             app:cardCornerRadius="12dp"
-            app:layout_constraintEnd_toStartOf="@+id/favorite_detail_anime"
+            app:layout_constraintEnd_toStartOf="@+id/addfavorite_button"
             app:layout_constraintStart_toEndOf="@+id/back_button_anime"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -66,14 +53,14 @@
 
         </androidx.cardview.widget.CardView>
 
-        <ImageButton
-            android:id="@+id/favorite_detail_anime"
+        <ImageView
+            android:id="@+id/addfavorite_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/baseline_favorite_24"
+            android:src="@drawable/ic_empty_favorite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -85,7 +72,7 @@
             android:background="@android:color/transparent"
             android:src="@drawable/round_arrow_back_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/favorite_detail_anime" />
+            app:layout_constraintTop_toTopOf="@+id/addfavorite_button" />
 
         <TextView
             android:id="@+id/anime_detail_title"

@@ -18,4 +18,6 @@ interface AnimeRepository {
 
     suspend fun addFavorites(favoritesDbModel:FavoritesEntity):Flow<NetworkResponseState<FavoritesEntity>>
 
+
+
 }
