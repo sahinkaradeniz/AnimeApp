@@ -1,11 +1,11 @@
-# MovieApp-Multi-Module-AndroidApp
+# AnimeApp - Multi-Module Android App
 This is an application to understand Multi-Module architecture and Kotlin technologies.
 
-
 ## Project Screens
-HOME SCREEN | DETAİL SCREEN | FAVORİTES SCREEN | 
+HOME SCREEN | DETAİL SCREEN | DETAİL SCREEN | 
 --- | --- | --- | 
-![Uygulama Ekran Görüntüsü](https://user-images.githubusercontent.com/85341568/229292015-b901ecd3-3e14-4779-bf7f-15335313f198.png) |![Uygulama Ekran Görüntüsü](https://user-images.githubusercontent.com/85341568/229292046-cd52374b-39d9-4f8c-8f5a-1d683058cb7b.png) |![Uygulama Ekran Görüntüsü](https://user-images.githubusercontent.com/85341568/229292054-9fdb1373-2518-4293-b8b4-7e9782f49561.png) |
+![Uygulama Ekran Görüntüsü](https://user-images.githubusercontent.com/85341568/229534880-c3eee580-9ca6-4dfc-adff-0bd48f1bdfeb.png) |![Uygulama Ekran Görüntüsü](https://user-images.githubusercontent.com/85341568/229292046-cd52374b-39d9-4f8c-8f5a-1d683058cb7b.png) |![Uygulama Ekran Görüntüsü](https://user-images.githubusercontent.com/85341568/229535097-55060382-07fa-44a3-8770-abe3b4086456.png) |
+
 
 ## Project Tech stack 
 
@@ -19,7 +19,7 @@ HOME SCREEN | DETAİL SCREEN | FAVORİTES SCREEN |
  
 - [Dependency Injection with Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 
-- [Navigation Componenet](https://developer.android.com/guide/navigation)
+- [Navigation Component](https://developer.android.com/guide/navigation)
 
 - [Retrofit](https://square.github.io/retrofit/)
 
@@ -51,6 +51,9 @@ HOME SCREEN | DETAİL SCREEN | FAVORİTES SCREEN |
 
 * Common Module
 
-
 ![Untitled (5)](https://user-images.githubusercontent.com/85341568/229533921-5fc6445d-0549-455b-8137-89c52a36cf59.jpg)
+
+### API
+
+[Jikan Anime Api](https://jikan.moe/)
 
