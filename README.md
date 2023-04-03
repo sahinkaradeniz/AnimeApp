@@ -31,3 +31,26 @@ HOME SCREEN | DETAİL SCREEN | FAVORİTES SCREEN |
 
 - [Glide ](https://github.com/bumptech/glide)
 
+## Project Graph
+
+<img width="233" alt="Ekran Resmi 2023-03-26 12 11 59" src="https://user-images.githubusercontent.com/85341568/229533259-66561285-a573-41f8-b2ea-0fedeef4cef8.png">
+
+### Modules
+
+* Data Module
+
+![Untitled (1)](https://user-images.githubusercontent.com/85341568/229533449-de102855-f7a6-4d80-990d-e39017ea8fbf.jpg)
+
+* Domain Module
+
+![Untitled (2)](https://user-images.githubusercontent.com/85341568/229533722-5fa0775b-1f18-4d50-8361-949357ff1866.jpg)
+
+* Presentation Module
+
+![Untitled (3)](https://user-images.githubusercontent.com/85341568/229533864-4855e808-f491-4716-a5ed-6ab994644890.jpg)
+
+* Common Module
+
+
+![Untitled (5)](https://user-images.githubusercontent.com/85341568/229533921-5fc6445d-0549-455b-8137-89c52a36cf59.jpg)
+
