@@ -80,8 +80,8 @@ class AnimeFragment : Fragment() {
         binding.animeRcv.layoutManager = GridLayoutManager(requireContext(), 2)
     }
 
-    private fun clickItem(id: Int,isFavorite:Int) {
-        val action = AnimeFragmentDirections.actionAnimeFragmentToAnimeDetailFragment(id,isFavorite)
+    private fun clickItem(id: Int) {
+        val action = AnimeFragmentDirections.actionAnimeFragmentToAnimeDetailFragment(id)
         findNavController().navigate(action)
     }
 

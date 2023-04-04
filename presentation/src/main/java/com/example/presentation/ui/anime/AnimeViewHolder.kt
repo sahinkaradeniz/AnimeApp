@@ -11,13 +11,13 @@ import com.example.presentation.util.toFavorite
 
 class AnimeViewHolder(
     private val binding: AnimeItemBinding,
-    private val itemClick: ((Int, Int) -> Unit)?,
+    private val itemClick: ((Int) -> Unit)?,
     private val favoriteClick: ((FavoritesEntity) -> Unit)?,
 ) : BaseViewHolder<AnimeUiData>(binding.root) {
     companion object {
         fun createFrom(
             parent: ViewGroup,
-            itemClickListener: ((Int, Int) -> Unit)?,
+            itemClickListener: ((Int) -> Unit)?,
             favoriteClickListener: ((FavoritesEntity) -> Unit)?,
         ) =
             AnimeViewHolder(
@@ -33,10 +33,7 @@ class AnimeViewHolder(
             animeTitle.text = data.titleEnglish
             animeRate.text = data.score.toString()
             animeImage.setOnClickListener {
-                if (data.isFavorites)
-                    itemClick?.invoke(data.malId, 1)
-                else
-                    itemClick?.invoke(data.malId, 0)
+                itemClick?.invoke(data.malId)
             }
             animeFavorite.setOnClickListener {
 
